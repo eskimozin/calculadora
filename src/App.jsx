@@ -9,7 +9,6 @@ import {Footer} from "./components/Footer";
 import {HashRouter, Route, Routes} from "react-router-dom";
 
 import Home from "./pages/Home.jsx";
-import YoutubeChannels from "./pages/YoutubeChannels.jsx";
 import {baseUrl} from "./data/config.js";
 import {AppContext} from "./components/AppContext/AppContext.jsx";
 
@@ -36,14 +35,7 @@ function App() {
     const config = {attributes: true, childList: true, subtree: true};
     setPathname(window.location.pathname.replace(`/${baseUrl}/`, ""));
     
-    const callback = () => {
-      // const callback = (mutationList) => {
-      setPathname(window.location.pathname.replace(`/${baseUrl}/`, ""));
-      // for (const mutation of mutationList) {
-      // if (mutation.type === "childList") console.log("A child node has been added or removed.");
-      // else if (mutation.type === "attributes") console.log(`The ${mutation.attributeName} attribute was modified.`);
-      // }
-    }
+    const callback = () => setPathname(window.location.pathname.replace(`/${baseUrl}/`, ""));
     
     const observer = new MutationObserver(callback);
     observer.observe(targetNode, config);
@@ -61,7 +53,6 @@ function App() {
           <div className="App">
             <Routes>
               <Route path={`/`} element={<Home/>}/>
-              <Route path={`/youtube`} element={<YoutubeChannels/>}/>
             </Routes>
           </div>
           <Footer/>

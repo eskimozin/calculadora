@@ -1,11 +1,11 @@
 import './index.css'
-import {contacts} from '../../data/contacts.js'
 import {useContext} from "react";
 import {ThemeContext} from "../AppContext/AppContext.jsx";
+import {app} from "../../data/config.js"
 
-function Header() {
-  const {mail} = contacts;
+  function Header() {
   const {pathname} = useContext(ThemeContext);
+  const {title} = app;
   
   return (
     <header className="animate-from-bottom">
@@ -21,8 +21,7 @@ function Header() {
           <img src={pathname ? "../img/favicon.png" : "./img/favicon.png"} alt="Imagem do Eskimozin"/>
         </a>
       </div>
-      <h1>Eskimozin</h1>
-      <a href={`mailto:${mail}`} className={"link-style"} rel={"noreferrer noopener"} data-ref={"eskimozin-mail"}>{mail}</a>
+      <h1 className={"text-balance"}>{title}</h1>
     </header>
   )
 }
