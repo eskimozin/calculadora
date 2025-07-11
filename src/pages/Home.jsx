@@ -29,16 +29,16 @@ function Home() {
         
         <LiveTimeCalculator/>
         
-        <section className={"banner-campaign p-3 rounded-2 d-flex flex-column gap-3 align-items-center"}>
-          <h3 className={"text-dark text-balance fs-3 m-0 text-center"}>Contribua com a Eskimothon, para o Eskimo ficar 1 ano em live!</h3>
+        <section className={"banner-campaign p-3 rounded-2 d-flex flex-column gap-3 align-items-center text-center text-balance text-white"}>
+          <h3 className={"text-dark fs-3 m-0"}>Contribua com a Eskimothon, para o Eskimo ficar 1 ano em live!</h3>
           <p>A live começa em {subathonInitComponent}.</p>
-          <div className={"d-flex flex-wrap gap-2"}>
+          <div className={"d-flex flex-wrap justify-content-center align-items-center gap-2"}>
             <Link to={links["livepix"]} className={btnDonation} style={styleBtnDonation}>Live Pix {iconOpenInNewPage}</Link>
             <Link to={links["subsTwitch"]} className={btnDonation} style={styleBtnDonation}>Dar subs {iconOpenInNewPage}</Link>
             <Link to={links["bitsTwitch"]} className={btnDonation} style={styleBtnDonation}>Contribuir com bits {iconOpenInNewPage}</Link>
           </div>
-          <div className={"text-center"}>
-            <p className={"m-0 text-balance"}>{resources.valDonation} real dá {resources.donationInTimeMinutes} minuto de live, <b>{resources.valSubs} sub dá {resources.subsInTimeMinutes} minutos</b> e {resources.valBits} bits vira {resources.bitsInTimeMinutes} minutos!</p>
+          <div>
+            <p className={"m-0"}>{resources.valDonation} real dá {resources.donationInTimeMinutes} minuto de live, <b>{resources.valSubs} sub dá {resources.subsInTimeMinutes} minutos</b> e {resources.valBits} bits vira {resources.bitsInTimeMinutes} minutos!</p>
           </div>
         </section>
       </div>

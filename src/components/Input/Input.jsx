@@ -1,40 +1,29 @@
 import PropTypes from "prop-types";
-import {IMaskInput} from 'react-imask';
+import {NumericFormat} from 'react-number-format';
+import React from 'react';
 
-const Input = ({
-                 type, value, onChange, placeholder, min, max, mask, name,
-                 scale,
-                 thousandsSeparator,
-                 radix,
-                 normalizeZeros,
-                 padFractionalZeros,
-                 unmask,
-               }) => {
-  
-  const handleAccept = (value) => {
-    // A função 'onChange' receberá o valor não mascarado (número puro)
-    if (onChange) onChange(name, value);
-  };
-  
-  const props = {
-    type, value, placeholder, min: min ? parseInt(min) : 0, max: max ? parseInt(max) : 0, mask,
-    scale,
-    thousandsSeparator,
-    radix,
-    normalizeZeros,
-    padFractionalZeros,
-    unmask,
-    name,
-  };
-  
-  const inputClasses = "form-control"
+const InputComponent = (props, ref) => {
+  const {onChange, name, maxLimit, ...other} = props;
   
   return (
-    <IMaskInput {...props} className={inputClasses} onAccept={handleAccept}/>
-  )
-}
+    <NumericFormat
+      {...other}
+      getInputRef={ref}
+      onValueChange={(values, sourceInfo) => {
+        if (onChange && sourceInfo.event) {
+          onChange(name, values.value);
+        }
+      }}
+      isAllowed={(values) => {
+        const { floatValue } = values;
+        return floatValue < maxLimit;
+      }}
+      className="form-control"
+    />
+  );
+};
 
-Input.propTypes = {
+InputComponent.propTypes = {
   type: PropTypes.any,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
@@ -42,15 +31,18 @@ Input.propTypes = {
   min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   max: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   step: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  mask: PropTypes.any,
   name: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  inputMode: PropTypes.string,
   
-  scale: PropTypes.number,
-  thousandsSeparator: PropTypes.string,
-  radix: PropTypes.string,
-  normalizeZeros: PropTypes.bool,
-  padFractionalZeros: PropTypes.bool,
-  unmask: PropTypes.bool,
-}
+  thousandSeparator: PropTypes.string,
+  decimalSeparator: PropTypes.string,
+  decimalScale: PropTypes.number,
+  allowNegative: PropTypes.bool,
+  maxLimit: PropTypes.number,
+};
+
+const Input = React.forwardRef(InputComponent);
+Input.displayName = 'Input';
 
 export default Input;

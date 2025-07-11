@@ -1,6 +1,6 @@
 import './styles.css';
 
-import {useState, useMemo} from 'react';
+import {useState, useMemo, useEffect} from 'react';
 
 import ModeSelector from './ModeSelector';
 import ValueToTimeForm from './ValueToTimeForm';
@@ -12,16 +12,35 @@ import AnimatedComponents from "../AnimatedComponent/AnimatedComponents.jsx";
 const LiveTimeCalculator = () => {
   const [calculationMode, setCalculationMode] = useState('toTime'); // 'toTime' or 'toValue'
   
-  const [values, setValues] = useState({real: '', subs: '', bits: ''});
+  const [values, setValues] = useState({real: '10', subs: '', bits: ''});
   const [time, setTime] = useState({hours: '1', minutes: '', seconds: ''});
+  
+  const focusElement = (id) => {
+    setTimeout(() => {
+      document.getElementById(id).focus();
+    }, 100);
+  }
+  
+  useEffect(() => {
+    if (calculationMode === 'toTime') focusElement("real");
+    else if (calculationMode === 'toValue') focusElement("hours");
+  }, [calculationMode])
   
   const handleValueChange = (name, value) => {
     setValues(prev => ({...prev, [name]: value}));
   };
   
+  const clearValues = () => {
+    setValues({real: '10', subs: '', bits: ''});
+  }
+  
   const handleTimeChange = (name, value) => {
     setTime(prev => ({...prev, [name]: value}));
   };
+  
+  const clearTimes = () => {
+    setTime({hours: '1', minutes: '', seconds: ''});
+  }
   
   const totalSeconds = useMemo(() => {
     if (calculationMode === 'toTime') {
@@ -51,14 +70,14 @@ const LiveTimeCalculator = () => {
         {calculationMode === 'toTime' ? (
           <AnimatedComponents>
             <div className="d-flex flex-column gap-3">
-              <ValueToTimeForm values={values} onValueChange={handleValueChange}/>
+              <ValueToTimeForm values={values} onValueChange={handleValueChange} clearValues={clearValues}/>
               <TimeDisplay totalSeconds={totalSeconds}/>
             </div>
           </AnimatedComponents>
         ) : (
           <AnimatedComponents>
             <div className="d-flex flex-column gap-3">
-              <TimeToValueForm time={time} onTimeChange={handleTimeChange}/>
+              <TimeToValueForm time={time} onTimeChange={handleTimeChange} clearTimes={clearTimes}/>
               <ValueDisplay totalSeconds={totalSeconds}/>
             </div>
           </AnimatedComponents>
