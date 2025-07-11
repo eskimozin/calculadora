@@ -22,7 +22,7 @@ const TimeDisplay = ({totalSeconds}) => {
       <span className={""}>Isso dá em tempo de live:</span>
       <h3 className={"mt-1 fs-3 fw-semibold text-success-emphasis"}>
         {`
-          ${hInt > 0 ? formattedTime.h + ` ${hInt > 1 ? "horas" : "hora"}` + `${(mInt > 0 || sInt > 0) && ","}` : ""}
+          ${hInt > 0 ? formattedTime.h + ` ${hInt > 1 ? "horas" : "hora"}` + `${(mInt > 0 || sInt > 0) ? "," : ""}` : ""}
           ${mInt > 0 ? formattedTime.m + ` ${mInt > 1 ? "minutos" : "minuto"}` + `${(sInt > 0) ? " e" : ""}` : ""}
           ${sInt > 0 ? formattedTime.s + ` ${sInt > 1 ? "segundos" : "segundo"}` : ""}
           ${(hInt <= 0 && mInt <= 0 && sInt <= 0) ? "nada" : ""}
