@@ -1,5 +1,5 @@
 import Moment from 'moment'
-import Arial from "../components/arial/Arial.jsx";
+import Arial from "../components/Arial/Arial.jsx";
 
 export default class Util {
   // Mark link as active
