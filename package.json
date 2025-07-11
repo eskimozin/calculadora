@@ -1,6 +1,6 @@
 {
-  "name": "links",
-  "description": "Links de redes sociais, canais e de contato do Eskimozin",
+  "name": "calculadora",
+  "description": "Calculadora da subathon 2025 do eskimozin ",
   "private": true,
   "version": "1.0.0",
   "type": "module",
