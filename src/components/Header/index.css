@@ -33,8 +33,6 @@ header h1 {
   text-transform: lowercase;
   font-weight: 600;
   color: #FFFFFF;
-  margin: 0 auto;
-  max-width: 580px;
 }
 
 header .link-style {

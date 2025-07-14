@@ -3,7 +3,7 @@ import {NumericFormat} from 'react-number-format';
 import React from 'react';
 
 const InputComponent = (props, ref) => {
-  const {onChange, name, maxLimit, ...other} = props;
+  const {onChange, name, maxLimit, className, ...other} = props;
   
   return (
     <NumericFormat
@@ -15,10 +15,10 @@ const InputComponent = (props, ref) => {
         }
       }}
       isAllowed={(values) => {
-        const { floatValue } = values;
+        const {floatValue} = values;
         return floatValue < maxLimit;
       }}
-      className="form-control"
+      className={"form-control" + " " + className}
     />
   );
 };
@@ -34,6 +34,7 @@ InputComponent.propTypes = {
   name: PropTypes.string,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   inputMode: PropTypes.string,
+  className: PropTypes.string,
   
   thousandSeparator: PropTypes.string,
   decimalSeparator: PropTypes.string,

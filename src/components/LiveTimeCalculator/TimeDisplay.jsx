@@ -20,7 +20,7 @@ const TimeDisplay = ({totalSeconds}) => {
   return (
     <div className="result-section bg-body-secondary m-0">
       <span className={""}>Isso dá em tempo de live:</span>
-      <h3 className={"mt-1 fs-3 fw-semibold text-success-emphasis"}>
+      <h3 className={"mt-1 fs-3 fw-semibold text-success-emphasis text-balance"}>
         {`
           ${hInt > 0 ? formattedTime.h + ` ${hInt > 1 ? "horas" : "hora"}` + `${(mInt > 0 || sInt > 0) ? "," : ""}` : ""}
           ${mInt > 0 ? formattedTime.m + ` ${mInt > 1 ? "minutos" : "minuto"}` + `${(sInt > 0) ? " e" : ""}` : ""}

@@ -20,13 +20,13 @@ const ValueDisplay = ({totalSeconds}) => {
     <div className="result-section bg-body-secondary m-0">
       <span className={"text-balance d-block"} style={{lineHeight: "1.5"}}>Para que o eskimo fique esse tempo em live, você precisa doar:</span>
       <div className={"mt-2 fw-semibold text-white-50"}>
-        <p className={"fs-3 m-0 text-balance"} style={{lineHeight: "1.25"}}>
+        <h3 className={"fs-3 m-0 text-balance"} style={{lineHeight: "1.25"}}>
           <span className={"text-success-emphasis"}>{timeInMinutes > 0 ? realSnt : "zero"} reais</span>
           <span>{" "}ou{" "}</span>
-          <span style={{textWrap: "nowrap"}}><span className={"text-success-emphasis"}>{values.subs}</span> {subsInt > 1 ? "subs" : "sub"}</span>
+          <span className={"text-success-emphasis"} style={{textWrap: "nowrap"}}>{values.subs} {subsInt > 1 ? "subs" : "sub"}</span>
           <span>{" "}ou{" "}</span>
-          <span style={{textWrap: "nowrap"}}><span className={"text-success-emphasis"}>{values.bits}</span> {bitsInt > 1 ? "bits" : "bit"}</span>
-        </p>
+          <span className={"text-success-emphasis"} style={{textWrap: "nowrap"}}>{values.bits} {bitsInt > 1 ? "bits" : "bit"}</span>
+        </h3>
       </div>
       <div className={"mt-2"}>
         <details>
