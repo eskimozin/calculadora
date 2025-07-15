@@ -71,7 +71,7 @@ const LiveTimeCalculator = () => {
           <AnimatedComponents>
             <div className="d-flex flex-column gap-3">
               <ValueToTimeForm values={values} onValueChange={handleValueChange} clearValues={clearValues}/>
-              <TimeDisplay totalSeconds={totalSeconds}/>
+              <TimeDisplay totalSeconds={totalSeconds} values={values}/>
             </div>
           </AnimatedComponents>
         ) : (

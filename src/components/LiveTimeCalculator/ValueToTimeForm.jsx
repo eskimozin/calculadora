@@ -141,7 +141,9 @@ const ValueToTimeForm = ({values, onValueChange, clearValues}) => {
 };
 
 ValueToTimeForm.propTypes = {
-  values: PropTypes.object.isRequired, onValueChange: PropTypes.func.isRequired, clearValues: PropTypes.func.isRequired
+  values: PropTypes.object.isRequired,
+  onValueChange: PropTypes.func.isRequired,
+  clearValues: PropTypes.func.isRequired
 }
 
 export default ValueToTimeForm;

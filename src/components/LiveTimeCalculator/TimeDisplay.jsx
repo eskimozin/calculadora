@@ -1,7 +1,7 @@
 import {useMemo} from 'react';
 import PropTypes from "prop-types";
 
-const TimeDisplay = ({totalSeconds}) => {
+const TimeDisplay = ({totalSeconds, values}) => {
   const formattedTime = useMemo(() => {
     if (isNaN(totalSeconds) || totalSeconds < 0) {
       return {d: 0, h: 0, m: 0, s: 0};
@@ -31,12 +31,29 @@ const TimeDisplay = ({totalSeconds}) => {
           ${(dInt <= 0 && hInt <= 0 && mInt <= 0 && sInt <= 0) ? "nada" : ""}
         `}
       </h3>
+      <div className={"mt-2"}>
+        <details>
+          <summary className={"text-sm"}>
+            Detalhes
+          </summary>
+          <p className={"m-0 text-sm text-body-secondary mt-1 text-balance"} style={{lineHeight: "1.5"}}>
+            Contribuições usadas no cálculo:{" "}
+            {
+              values &&
+              Object.entries(values).map(([key, value], i) => (
+                <span key={i} className={"text-capitalize"}>{key}: {(value || 0).toLocaleString("pt-br")} {i === Object.keys(values).length - 1 ? "" : " + "}</span>
+              ))
+            }
+          </p>
+        </details>
+      </div>
     </div>
   );
 };
 
 TimeDisplay.propTypes = {
   totalSeconds: PropTypes.number.isRequired,
+  values: PropTypes.object.isRequired,
 }
 
 
