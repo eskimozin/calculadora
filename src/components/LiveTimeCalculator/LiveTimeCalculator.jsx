@@ -31,7 +31,7 @@ const LiveTimeCalculator = () => {
   };
 
   const clearValues = () => {
-    setValues({ real: '10', subs: '', bits: '' });
+    setValues({ real: '0', subs: '', bits: '' });
   }
 
   const handleTimeChange = (name, value) => {
@@ -39,7 +39,7 @@ const LiveTimeCalculator = () => {
   };
 
   const clearTimes = () => {
-    setTime({ hours: '1', minutes: '', seconds: '' });
+    setTime({ hours: '0', minutes: '', seconds: '' });
   }
 
   const totalSeconds = useMemo(() => {
