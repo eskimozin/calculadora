@@ -1,7 +1,7 @@
 @import "aos.css";
 
 :root {
-  --gradient-1: radial-gradient(circle at center, #89C65A 0%, #6BAC3E 50%, #689A48 100%);
+  --gradient-1: radial-gradient(circle at center, #E7DD47 0%, #DBC605 50%, #EB8D00 100%);
 }
 
 * {
@@ -16,7 +16,7 @@ ul {
 }
 
 body {
-  background-image: linear-gradient(to bottom, #26296c, #131216);
+  background-image: linear-gradient(to bottom, #211F25, #131216);
   background-position: top center;
   background-size: cover;
   background-repeat: repeat-y;
@@ -29,7 +29,12 @@ body * {
   font-size: 1rem;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Inter Tight', 'Inter', sans-serif;
   line-height: normal !important;
   font-size: 1rem;
@@ -40,11 +45,17 @@ a {
   color: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0 !important;
   padding: 0 !important;
 
-  *{
+  * {
     font-size: inherit !important;
     line-height: inherit !important;
   }
@@ -119,7 +130,8 @@ main section:nth-child(3) {
   --bs-tooltip-margin: 2rem !important;
 }
 
-p.text-muted, span.text-muted {
+p.text-muted,
+span.text-muted {
   letter-spacing: 0.18px;
   color: #FFF8 !important;
   font-size: 1rem;
@@ -150,9 +162,11 @@ p.text-muted, span.text-muted {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -170,19 +184,19 @@ p.text-muted, span.text-muted {
   font-size: 13px !important;
 }
 
-.btn-success {
+.btn-warning {
   --bs-btn-color: #FFFFFF !important;
-  --bs-btn-bg: #689A48 !important;
-  --bs-btn-border-color: #6BAC3E !important;
+  --bs-btn-bg: #DBC605 !important;
+  --bs-btn-border-color: #CEAD19 !important;
   --bs-btn-hover-color: #FFFFFF !important;
-  --bs-btn-hover-bg: #89C65A !important;
-  --bs-btn-hover-border-color: #89C65A !important;
+  --bs-btn-hover-bg: #E7DD47 !important;
+  --bs-btn-hover-border-color: #E7DD47 !important;
   --bs-btn-focus-shadow-rgb: 137, 198, 90 !important;
   --bs-btn-active-color: #FFFFFF !important;
-  --bs-btn-active-bg: #5A873F !important;
-  --bs-btn-active-border-color: #5A873F !important;
+  --bs-btn-active-bg: #EB8D00 !important;
+  --bs-btn-active-border-color: #EB8D00 !important;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
   --bs-btn-disabled-color: #FFFFFF !important;
-  --bs-btn-disabled-bg: #A3CBA3 !important;
-  --bs-btn-disabled-border-color: #A3CBA3 !important;
+  --bs-btn-disabled-bg: #CBC7A3 !important;
+  --bs-btn-disabled-border-color: #CBC7A3 !important;
 }
