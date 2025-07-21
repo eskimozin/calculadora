@@ -12,7 +12,7 @@ const ModeSelector = ({ mode, onModeChange }) => {
         autoComplete={"off"}
         onChange={() => onModeChange('toTime')}
       />
-      <label className={"btn btn-warning text-black rounded-1 px-2.5 py-1.5"} htmlFor="btn-to-time">
+      <label className={"btn btn-warning text-black rounded-1 border-0 px-2.5 py-1.5"} htmlFor="btn-to-time">
         <div className={"d-flex align-items-center gap-1 flex-wrap justify-content-between"}>
           {mode === "toTime" && (
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="me-1" viewBox="0 0 16 16">
@@ -37,7 +37,7 @@ const ModeSelector = ({ mode, onModeChange }) => {
         checked={mode === 'toValue'}
         onChange={() => onModeChange('toValue')}
       />
-      <label className={"btn btn-warning text-black rounded-1 px-2.5 py-1.5"} htmlFor="btn-to-value">
+      <label className={"btn btn-warning text-black rounded-1 border-0 px-2.5 py-1.5"} htmlFor="btn-to-value">
         <div className={"d-flex align-items-center gap-1 flex-wrap justify-content-between"}>
           {mode === "toValue" && (
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="me-1" viewBox="0 0 16 16">

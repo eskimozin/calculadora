@@ -186,15 +186,15 @@ span.text-muted {
 
 .btn-warning {
   --bs-btn-color: #FFFFFF !important;
-  --bs-btn-bg: #DBC605 !important;
-  --bs-btn-border-color: #CEAD19 !important;
-  --bs-btn-hover-color: #FFFFFF !important;
-  --bs-btn-hover-bg: #E7DD47 !important;
-  --bs-btn-hover-border-color: #E7DD47 !important;
+  --bs-btn-bg: #FFDA6A !important;
+  --bs-btn-border-color: #EBBC00 !important;
+  --bs-btn-hover-color: #FFDA6A !important;
+  --bs-btn-hover-bg: #F2E94B !important;
+  --bs-btn-hover-border-color: #F2E94B !important;
   --bs-btn-focus-shadow-rgb: 137, 198, 90 !important;
   --bs-btn-active-color: #FFFFFF !important;
-  --bs-btn-active-bg: #EB8D00 !important;
-  --bs-btn-active-border-color: #EB8D00 !important;
+  --bs-btn-active-bg: #EBA100 !important;
+  --bs-btn-active-border-color: #EBA100 !important;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
   --bs-btn-disabled-color: #FFFFFF !important;
   --bs-btn-disabled-bg: #CBC7A3 !important;
