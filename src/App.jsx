@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {Suspense, useEffect, useState} from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as bootstrap from 'bootstrap';
@@ -11,6 +11,7 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import {baseUrl} from "./data/config.js";
 import {AppContext} from "./components/AppContext/AppContext.jsx";
+import Loading from "./components/Loading/Loading.jsx";
 
 function App() {
   const [pathname, setPathname] = useState("");
@@ -48,15 +49,15 @@ function App() {
   return (
     <AppContext value={{pathname, setPathname}}>
       <HashRouter>
-        <div className="App">
-          <Header className="Header"/>
+        <Suspense fallback={<Loading/>}>
           <div className="App">
+            <Header className="Header"/>
             <Routes>
               <Route path={`/`} element={<Home/>}/>
             </Routes>
+            <Footer/>
           </div>
-          <Footer/>
-        </div>
+        </Suspense>
       </HashRouter>
     </AppContext>
   );
