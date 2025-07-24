@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import Input from "../Input/Input.jsx";
 
 const TimeToValueForm = ({time, onTimeChange, clearTimes}) => {
-  return (<form className="time-input-group m-0" onSubmit={() => {}}>
+  return (<form className="time-input-group m-0" onSubmit={() => {
+  }}>
     <div className="form-group">
       <label>
         <span className={"d-block mb-1"}>Horas:</span>
@@ -72,7 +73,7 @@ const TimeToValueForm = ({time, onTimeChange, clearTimes}) => {
     </div>
     
     <div>
-      <button type={"reset"} className={"btn btn-secondary rounded-1 d-flex align-items-center justify-content-center gap-1"} onClick={clearTimes}>
+      <button type={"reset"} tabIndex={-1} className={"btn btn-secondary rounded-1 d-flex align-items-center justify-content-center gap-1"} onClick={clearTimes}>
         <span className={"text-sm"}>Limpar</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
           <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>

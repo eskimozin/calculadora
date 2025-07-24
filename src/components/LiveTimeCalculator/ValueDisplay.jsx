@@ -29,7 +29,7 @@ const ValueDisplay = ({ totalSeconds }) => {
         </h3>
       </div>
       <div className={"mt-2"}>
-        <details>
+        <details tabIndex={-1}>
           <summary className={"text-sm"}>
             Detalhes
           </summary>
