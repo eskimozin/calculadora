@@ -19,7 +19,7 @@ function Home() {
   
   const moddayInit = "2025-07-26T00:00:00-03:00";
   const moddayFinish = "2025-07-27T00:00:00-03:00";
-  const moddayAnnouncementComponent = <div className={"d-block mb-3 fw-medium"}>Hoje é <span className={"text-warning"}>modday!</span> Isso significa que <span className={"text-warning"}>todos os donates feitos via <Link to={links["livepix"]} className={"text-decoration-none text-warning fw-bolder"}>LIVE PIX</Link> vão para os magnânimos moderadores</span> que tantam ajudam a live e a comunidade :D</div>
+  const moddayAnnouncementComponent = <div className={"d-block mb-3 fw-medium"}>Hoje é <span className={"text-warning"}>modday!</span> Isso significa que <span className={"text-warning"}>todos os donates feitos via <Link to={links["livepix"]} className={"text-decoration-none text-warning fw-bolder"}>LIVE PIX</Link> vão para os magnânimos moderadores</span> que ajudam a live e a comunidade :D</div>
   
   const isModday = moment().diff(moment(moddayInit), "m") >= 0 && moment().diff(moment(moddayFinish), "m") < 0;
   
