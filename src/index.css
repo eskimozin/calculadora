@@ -16,7 +16,8 @@ ul {
 }
 
 body {
-  background-image: linear-gradient(to bottom, #211F25, #131216);
+  /*background-image: linear-gradient(to bottom, #211F25, #131216);*/
+  background-image: linear-gradient(to bottom, #0E0E10, #0E0E10);
   background-position: top center;
   background-size: cover;
   background-repeat: repeat-y;
