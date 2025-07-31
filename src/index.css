@@ -200,3 +200,12 @@ span.text-muted {
   --bs-btn-disabled-bg: #CBC7A3 !important;
   --bs-btn-disabled-border-color: #CBC7A3 !important;
 }
+
+.emphasis {
+  background-image: var(--gradient-1);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text;
+  background-size: 200% auto;
+  color: transparent;
+}

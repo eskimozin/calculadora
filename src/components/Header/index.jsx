@@ -24,7 +24,7 @@ function Header() {
         </div>
       </header>
       <div className={"animate-from-bottom"} style={{maxWidth: '580px', margin: '0 auto'}}>
-        <h1 className={"text-balance text-center p-0 m-0"}>{title}</h1>
+        <h1 className={"text-balance text-center p-0 m-auto emphasis"} style={{maxWidth: "425px"}}>{title}</h1>
       </div>
     </>
   )

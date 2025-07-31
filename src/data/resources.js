@@ -1,6 +1,5 @@
 const resources = {
-  "subathonIsEnded": false,
-  // "subathonIsEnded": true,
+  "subathonIsEnded": true,
   "minCountBits": 10,
   "valDonation": 1,
   "valSubs": 1,

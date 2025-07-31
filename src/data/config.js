@@ -6,7 +6,7 @@ const contacts = {
 }
 
 const app = {
-  "title": "Calculadora da Eskimothon 2025"
+  "title": "Calculadora da Subathon"
 }
 
 const suggestionOptionsForBits = [
