@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="dark">
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
-    <meta http-equiv="Content-Security-Policy" content="
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+  <meta http-equiv="Content-Security-Policy" content="
       default-src 'none';
       style-src 'unsafe-inline' 'self' https://fonts.googleapis.com;
       img-src 'self';
@@ -16,22 +16,60 @@
       frame-src 'self';
       report-uri /csp-report;
     ">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora - Subathon Eskimozin</title>
-    <script type="module" crossorigin src="/calculadora/assets/index-B7O-ETtT.js"></script>
-    <link rel="stylesheet" crossorigin href="/calculadora/assets/index-kJXQGey8.css">
-  </head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculadora - Subathon Eskimozin</title>
+  
+  <style>
+    .overlay-appx * {
+      font-size: 16px !important;
+    }
+    
+    .overlay-appx {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #201C24 !important;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .spinner-first-load-appx {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 50% !important;
+      border: 6px solid #E4A40235 !important;
+      border-right-color: #E4A402 !important;
+      animation: spinner-appx 1.2s infinite linear;
+    }
+    
+    @keyframes spinner-appx {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+  </style>
+  <script type="module" crossorigin src="/calculadora/assets/index-BeMmZaDW.js"></script>
+  <link rel="stylesheet" crossorigin href="/calculadora/assets/index-kJXQGey8.css">
+</head>
 
-  <body>
-    <noscript>
-      <h1>Este site precisa de JavaScript para funcionar corretamente.</h1>
-      <p>Habilite o javascript e recarregue a página.</p>
-    </noscript>
+<body>
+<div class="overlay-appx">
+  <div class="spinner-first-load-appx"></div>
+</div>
 
-    <div id="root">
-    </div>
+<noscript>
+  <h1>Este site precisa de JavaScript para funcionar corretamente.</h1>
+  <p>Habilite o javascript e recarregue a página.</p>
+</noscript>
+
+<div id="root">
+</div>
 
-  </body>
+</body>
 
 </html>
