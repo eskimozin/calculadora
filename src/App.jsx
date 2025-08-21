@@ -46,6 +46,10 @@ function App() {
     }
   }, []);
   
+  useEffect(() => {
+    document.querySelector(".overlay-appx").style.display = "none";
+  }, []);
+  
   return (
     <AppContext value={{pathname, setPathname}}>
       <HashRouter>
