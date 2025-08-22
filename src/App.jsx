@@ -49,7 +49,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
       document.querySelector(".overlay-appx").style.display = "none";
-    }, 1000);
+    }, 200);
   }, []);
   
   return (
