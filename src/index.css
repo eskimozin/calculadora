@@ -4,6 +4,11 @@
   --gradient-1: radial-gradient(circle at center, #E7DD47 0%, #DBC605 50%, #EB8D00 100%);
 }
 
+@font-face {
+    font-family: Arial;
+    src: url("/fonts/Arial.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
