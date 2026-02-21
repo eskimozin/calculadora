@@ -1,31 +1,43 @@
-import { Main } from "../components/Main";
+import {Main} from "../components/Main";
 import LiveTimeCalculator from "../components/LiveTimeCalculator/LiveTimeCalculator.jsx";
 import moment from "moment";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Util from "../assets/Util.jsx";
 import links from "../data/links.js";
 import resources from "../data/resources.js";
 import AnimatedComponents from "../components/AnimatedComponent/AnimatedComponents.jsx";
+import {useEffect, useRef, useState} from "react";
 
 function Home() {
   const iconOpenInNewPage = (
     <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="" className={"text-dark"}>
-      <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+      <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"/>
     </svg>
   )
-
+  
+  const yearCurrentCount = useRef(2025);
+  const nextDateForNewSubathon = useRef("2026-01-01T00:00:00-03:00");
+  
   const subathonInit = "2025-07-11T18:00:00-03:00";
-  const subathonInitComponent = moment().diff(moment(subathonInit), "seconds") > 0 ? <span style={{ color: "inherit" }}>A live está no ar!</span> : (<span className="text-black">A live começa em {Util.renderText(moment(subathonInit).format("DD/MM/YYYY [às] HH:mm [UTC]Z"))}.</span>);
-
+  const subathonInitComponent = moment().diff(moment(subathonInit), "seconds") > 0 ? <span style={{color: "inherit"}}>A live está no ar!</span> : (<span className="text-black">A live começa em {Util.renderText(moment(subathonInit).format("DD/MM/YYYY [às] HH:mm [UTC]Z"))}.</span>);
+  const [diff, setDiff] = useState(0);
+  
+  useEffect(() => {
+    if (subathonInit && subathonInitComponent) setDiff(moment().diff(moment(nextDateForNewSubathon.current)));
+  }, [subathonInit, subathonInitComponent])
+  
   const btnDonation = "btn btn-default rounded-1 text-dark d-flex align-items-center gap-1";
-  const styleBtnDonation = { backdropFilter: "blur(10px)", backgroundColor: "#FFFFFF60", border: "1px solid #FFFFFF50" };
-
+  const styleBtnDonation = {backdropFilter: "blur(10px)", backgroundColor: "#FFFFFF60", border: "1px solid #FFFFFF50"};
+  
   return (
     <Main className="Main">
       {
         resources["subathonIsEnded"] ? (
           <section className={"banner-campaign py-5 px-3 rounded-2 d-flex flex-column gap-3 align-items-center text-center text-balance text-black mb-1"}>
-            <h3 className={"text-dark fs-3 m-0"}>A subathon de 2025 acabou. Mas ano que vem tem mais.</h3>
+            <h3 className={"text-dark fs-3 m-0"}>
+              A subathon de {yearCurrentCount.current ?? "2025"} acabou.{" "}
+              Mas {diff > 0 ? "esse ano tem mais" : "ano que vem tem mais"}.
+            </h3>
             <p>Fique ligado e guarde dinheiro. Entre no nosso servidor do Discord e fique ligado nas novidades da live.</p>
             <div className={"d-flex flex-wrap justify-content-center align-items-center gap-2 mb-2"}>
               <Link to={links["discordInvite"]} className={btnDonation} style={styleBtnDonation}>Clique aqui para entrar no Iglu {iconOpenInNewPage}</Link>
@@ -38,9 +50,9 @@ function Home() {
                 <p>{subathonInitComponent}</p>
                 <p>Assista em <Link to={"https://twitch.tv/eskimozin"} className={"text-body"}>{Util.renderText("twitch.tv/eskimozin")}</Link></p>
               </section>
-
-              <LiveTimeCalculator />
-
+              
+              <LiveTimeCalculator/>
+              
               <section className={"banner-campaign p-3 rounded-2 d-flex flex-column gap-3 align-items-center text-center text-balance"}>
                 <h3 className={"text-dark fs-3 m-0"}>Contribua com a Eskimothon, para o Eskimo ficar 1 ano em live!</h3>
                 <p className="text-black">{subathonInitComponent}</p>

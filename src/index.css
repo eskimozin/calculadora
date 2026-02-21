@@ -1,7 +1,7 @@
 @import "aos.css";
 
 :root {
-  --gradient-1: radial-gradient(circle at center, #E7DD47 0%, #DBC605 50%, #EB8D00 100%);
+    --gradient-1: radial-gradient(circle at center, #E7DD47 0%, #DBC605 50%, #EB8D00 100%);
 }
 
 @font-face {
@@ -10,28 +10,28 @@
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 body {
-  background-image: linear-gradient(to bottom, #211F25, #131216);
-  background-position: top center;
-  background-size: cover;
-  background-repeat: repeat-y;
-  min-height: 100vh;
+    background-image: linear-gradient(to bottom, #211F25, #131216);
+    background-position: top center;
+    background-size: cover;
+    background-repeat: repeat-y;
+    min-height: 100vh;
 }
 
 body * {
-  font-family: 'Inter', sans-serif;
-  line-height: 160%;
-  font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    line-height: 160%;
+    font-size: 1rem;
 }
 
 h1,
@@ -40,14 +40,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Inter Tight', 'Inter', sans-serif;
-  line-height: normal !important;
-  font-size: 1rem;
+    font-family: 'Inter Tight', 'Inter', sans-serif;
+    line-height: normal !important;
+    font-size: 1rem;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 p,
@@ -57,160 +57,168 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 !important;
-  padding: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
-  * {
-    font-size: inherit !important;
-    line-height: inherit !important;
-  }
+    * {
+        font-size: inherit !important;
+        line-height: inherit !important;
+    }
 }
 
 header div {
-  animation: fromTop .7s .2s backwards;
+    animation: fromTop .7s .2s backwards;
 }
 
 main section,
 .animate-from-bottom {
-  animation: fromBottom .7s ease forwards;
+    animation: fromBottom .7s ease forwards;
 }
 
 .animate-hide-to-bottom {
-  animation: hideToBottom .7s ease forwards;
+    animation: hideToBottom .7s ease forwards;
 }
 
 main section:nth-child(1) {
-  animation-delay: 0s;
+    animation-delay: 0s;
 }
 
 main section:nth-child(2) {
-  animation-delay: .3s;
+    animation-delay: .3s;
 }
 
 main section:nth-child(3) {
-  animation-delay: .6s;
+    animation-delay: .6s;
 }
 
 @keyframes fromTop {
-  from {
-    opacity: 0;
-    transform: translateY(-30px)
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-30px)
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0)
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
 }
 
 @keyframes fromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes hideToBottom {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-  to {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 }
 
 .custom-tooltip {
-  --bs-tooltip-font-size: 16px;
-  --bs-tooltip-bg: #000 !important;
-  --bs-tooltip-color: #FFF !important;
-  --bs-tooltip-opacity: 0.9;
-  --bs-tooltip-margin: 2rem !important;
+    --bs-tooltip-font-size: 16px;
+    --bs-tooltip-bg: #000 !important;
+    --bs-tooltip-color: #FFF !important;
+    --bs-tooltip-opacity: 0.9;
+    --bs-tooltip-margin: 2rem !important;
 }
 
 p.text-muted,
 span.text-muted {
-  letter-spacing: 0.18px;
-  color: #FFF8 !important;
-  font-size: 1rem;
-  font-family: 'Inter Tight', 'Inter', sans-serif;
-  font-weight: 300;
+    letter-spacing: 0.18px;
+    color: #FFF8 !important;
+    font-size: 1rem;
+    font-family: 'Inter Tight', 'Inter', sans-serif;
+    font-weight: 300;
 }
 
 .text-balance {
-  text-wrap: balance;
+    text-wrap: balance;
 }
 
 .text-always-balance {
-  text-wrap: balance;
+    text-wrap: balance;
 }
 
 /* Gradiente usado para as seções e foto no header */
 .gradient-area {
-  background-size: 400% 100% !important;
-  background: var(--gradient-1);
-  animation: gradientAnimation 10s linear infinite;
+    background-size: 400% 100% !important;
+    background: var(--gradient-1);
+    animation: gradientAnimation 10s linear infinite;
 }
 
 .cursor-pointer {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
 
-  50% {
-    background-position: 100% 50%;
-  }
+    50% {
+        background-position: 100% 50%;
+    }
 
-  100% {
-    background-position: 0% 50%;
-  }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .bg-dark {
-  background: #2A2634 !important
+    background: #2A2634 !important
 }
 
 .fs-inherit {
-  font-size: inherit !important;
+    font-size: inherit !important;
 }
 
 .text-sm {
-  font-size: 13px !important;
+    font-size: 13px !important;
 }
 
 .btn-warning {
-  --bs-btn-color: #FFFFFF !important;
-  --bs-btn-bg: #FFDA6A !important;
-  --bs-btn-border-color: #EBBC00 !important;
-  --bs-btn-hover-color: #FFDA6A !important;
-  --bs-btn-hover-bg: #F2E94B !important;
-  --bs-btn-hover-border-color: #F2E94B !important;
-  --bs-btn-focus-shadow-rgb: 137, 198, 90 !important;
-  --bs-btn-active-color: #FFFFFF !important;
-  --bs-btn-active-bg: #EBA100 !important;
-  --bs-btn-active-border-color: #EBA100 !important;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
-  --bs-btn-disabled-color: #FFFFFF !important;
-  --bs-btn-disabled-bg: #CBC7A3 !important;
-  --bs-btn-disabled-border-color: #CBC7A3 !important;
+    --bs-btn-color: #FFFFFF !important;
+    --bs-btn-bg: #FFDA6A !important;
+    --bs-btn-border-color: #EBBC00 !important;
+    --bs-btn-hover-color: #FFDA6A !important;
+    --bs-btn-hover-bg: #F2E94B !important;
+    --bs-btn-hover-border-color: #F2E94B !important;
+    --bs-btn-focus-shadow-rgb: 137, 198, 90 !important;
+    --bs-btn-active-color: #FFFFFF !important;
+    --bs-btn-active-bg: #EBA100 !important;
+    --bs-btn-active-border-color: #EBA100 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+    --bs-btn-disabled-color: #FFFFFF !important;
+    --bs-btn-disabled-bg: #CBC7A3 !important;
+    --bs-btn-disabled-border-color: #CBC7A3 !important;
 }
 
 .emphasis {
-  background-image: var(--gradient-1);
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text !important;
-  background-clip: text;
-  background-size: 200% auto;
-  color: transparent;
+    background-image: var(--gradient-1);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text !important;
+    background-clip: text;
+    background-size: 200% auto;
+    color: transparent;
+}
+
+.text-small {
+    font-size: 13px !important;
+
+    & * {
+        font-size: 13px !important;
+    }
 }
