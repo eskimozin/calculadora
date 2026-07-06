@@ -4,6 +4,8 @@ import {ThemeContext} from "../AppContext/AppContext.jsx";
 import {app} from "../../data/config.js"
 import {Link} from "react-router-dom";
 import {OverlayTrigger, Tooltip} from "react-bootstrap";
+import resources from "../../data/resources.js";
+import links from "../../data/links.js";
 
 function Header() {
   const {pathname} = useContext(ThemeContext);
@@ -14,12 +16,12 @@ function Header() {
       <header className="animate-from-bottom">
         <div className={"gradient-area"}>
           <a
-            href="https://www.twitch.tv/eskimozin/"
+            href={links.live}
             rel="noreferrer noopener"
             data-toggle="tooltip"
             data-placement="top"
             data-bs-custom-class="custom-tooltip"
-            title="Whiskimo na Twitch"
+            title={`Whiskimo na ${resources.streamPlatformName}`}
           >
             <img src={pathname ? "../img/favicon.png" : "./img/favicon.png"} alt="Imagem do Eskimozin"/>
           </a>

@@ -1,5 +1,9 @@
 import Moment from 'moment'
+import moment from 'moment'
 import Arial from "../components/Arial/Arial.jsx";
+import {app} from "../data/config.js";
+
+moment.locale(app["moment-locale"] ?? "pt-BR");
 
 export default class Util {
   // Mark link as active
@@ -239,4 +243,28 @@ export default class Util {
     
     return parts;
   };
+  
+  static diffToHuman(date) {
+    const now = moment();
+    const target = moment(date);
+    
+    if (!target.isValid()) return 'Data inválida';
+    
+    const diffSeconds = target.diff(now, 'seconds');
+    const absDiff = Math.abs(diffSeconds);
+    
+    if (diffSeconds > 0) {
+      if (absDiff < 60) return 'em alguns segundos';
+      if (absDiff < 3600) return `em ${target.diff(now, 'minutes')} minuto${target.diff(now, 'minutes') > 1 ? "s" : ""}`;
+      if (absDiff < 86400) return `em ${target.diff(now, 'hours')} hora${target.diff(now, 'hours') > 1 ? "s" : ""}`;
+      if (absDiff < (86400 * 30)) return `em ${target.diff(now, 'days')} dia${target.diff(now, 'days') > 1 ? "s" : ""}`;
+      return `${target.format('DD/MM/YYYY')}`;
+    }
+    
+    if (absDiff < 60) return 'há alguns segundos';
+    if (absDiff < 3600) return `há ${now.diff(target, 'minutes')} minuto${now.diff(target, 'minutes') > 1 ? "s" : ""}`;
+    if (absDiff < 86400) return `há ${now.diff(target, 'hours')} hora${now.diff(target, 'hours') > 1 ? "s" : ""}`;
+    if (absDiff < (86400 * 30)) return `há ${now.diff(target, 'days')} dia${now.diff(target, 'days') > 1 ? "s" : ""}`;
+    return `${target.format('DD/MM/YYYY')}`;
+  }
 }

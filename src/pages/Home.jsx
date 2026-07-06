@@ -16,10 +16,13 @@ function Home() {
   )
   
   const yearCurrentCount = useRef();
-  const nextDateForNewSubathon = useRef("2026-01-01T00:00:00-03:00");
+  const nextDateForNewSubathon = useRef((resources.subathonInitDatetime.get("year") ?? "2026") + "-01-01T00:00:00-03:00");
   
-  const subathonInit = "2025-07-11T18:00:00-03:00";
-  const subathonInitComponent = moment().diff(moment(subathonInit), "seconds") > 0 ? <span style={{color: "inherit"}}>A live está no ar!</span> : (<span className="text-black">A live começa em {Util.renderText(moment(subathonInit).format("DD/MM/YYYY [às] HH:mm [UTC]Z"))}.</span>);
+  const subathonInit = resources.subathonInitDatetime;
+  const subathonInitComponent = moment().diff(moment(subathonInit), "seconds") > 0 ?
+    (<span style={{color: "inherit"}} className={"d-inline-block text-balance"}>A live está no ar!</span>) :
+    (<span className="text-body d-inline-block text-balance">A live começa em {Util.diffToHuman(subathonInit)} ~ ({Util.renderText(moment(subathonInit).format("DD/MM/YYYY [às] HH:mm [UTC]Z"))}).</span>);
+  // {Util.renderText(moment(subathonInit).format("DD/MM/YYYY [às] HH:mm [UTC]Z"))}
   const [diff, setDiff] = useState(0);
   
   useEffect(() => {
