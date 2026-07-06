@@ -36,15 +36,17 @@ const TimeDisplay = ({totalSeconds, values}) => {
           <summary className={"text-sm"}>
             Detalhes
           </summary>
-          <p className={"m-0 text-sm text-body-secondary mt-1 text-balance"} style={{lineHeight: "1.5"}}>
-            Contribuições usadas no cálculo:{" "}
-            {
-              values &&
-              Object.entries(values).map(([key, value], i) => (
-                <span key={i} className={"text-capitalize"}>{key}: {(value || 0).toLocaleString("pt-br")} {i === Object.keys(values).length - 1 ? "" : " + "}</span>
-              ))
-            }
-          </p>
+          <div className={"m-0 text-sm text-body-secondary mt-1 text-balance"} style={{lineHeight: "1.5"}}>
+            <span className={"fs-inherit"}>Contribuições usadas no cálculo:{" "}</span>
+            <p className={"m-0 text-sm text-body-secondary mt-1"} style={{lineHeight: "1.5"}}>
+              {
+                values &&
+                Object.entries(values).map(([key, value], i) => (
+                  <span key={i} className={"text-capitalize"}>{key}: {key.toLowerCase() === "pix" ? "R$" : ""} {(value || 0).toLocaleString("pt-br")} {i === Object.keys(values).length - 1 ? "" : " + "}</span>
+                ))
+              }
+            </p>
+          </div>
         </details>
       </div>
     </div>

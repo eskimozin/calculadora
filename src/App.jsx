@@ -34,11 +34,17 @@ function App() {
   useEffect(() => {
     const targetNode = document.body;
     const config = {attributes: true, childList: true, subtree: true};
-    setPathname(window.location.pathname.replace(`/${baseUrl}/`, ""));
     
-    const callback = () => setPathname(window.location.pathname.replace(`/${baseUrl}/`, ""));
+    const updatePathname = () => {
+      setPathname(prev => {
+        const newPathname = window.location.pathname.replace(`/${baseUrl}/`, "");
+        return prev !== newPathname ? newPathname : prev;
+      });
+    };
     
-    const observer = new MutationObserver(callback);
+    updatePathname();
+    
+    const observer = new MutationObserver(updatePathname);
     observer.observe(targetNode, config);
     
     return () => {

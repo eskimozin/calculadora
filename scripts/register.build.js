@@ -1,0 +1,72 @@
+// Importa as funções necessárias do módulo 'fs/promises'
+import {readFile, stat, unlink, writeFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import chalk from 'chalk';
+import path from 'node:path';
+
+// Config
+// Define o nome do arquivo JSON
+const fileName = 'register.build.json';
+
+// Constrói o caminho absoluto para o arquivo de forma segura em ES Modules
+const DIRNAME = path.dirname(fileURLToPath(import.meta.url));
+const projectRoot = path.join(DIRNAME, '..');
+const filePath = path.join(projectRoot, "public", fileName);
+const packageJsonPath = path.join(projectRoot, "package.json");
+const serviceWorkerPath = path.join(projectRoot, "public", "service-worker.js");
+
+// Função principal assíncrona para criar ou recriar o arquivo JSON.
+async function managerFile() {
+  try {
+    // Lê o package.json para obter a versão
+    const packageJsonContent = await readFile(packageJsonPath, 'utf-8');
+    const packageJson = JSON.parse(packageJsonContent);
+    const version = packageJson.version;
+    
+    // Lê o service-worker.js para obter a versão do cache
+    let cacheVersion = "Não definido";
+    try {
+      const swContent = await readFile(serviceWorkerPath, 'utf-8');
+      const match = swContent.match(/const cacheNumber = (\d+)/);
+      if (match && match[1]) {
+        cacheVersion = `V${match[1]}`;
+      }
+    } catch (swError) {
+      console.warn(chalk.yellow("Aviso: Não foi possível ler o service-worker.js:"), swError.message);
+    }
+    
+    const code = Date.now();
+    const datetimeCreate = new Date().toISOString();
+    
+    const data = {
+      version: version,
+      cacheVersion: cacheVersion,
+      code: code,
+      datetimeCreate: datetimeCreate
+    };
+    
+    const dadosEmJson = JSON.stringify(data, null, 2);
+    
+    // Verifica se o arquivo já existe e o apaga
+    try {
+      await stat(filePath);
+      await unlink(filePath);
+      console.log(chalk.yellow('Arquivo existente apagado com sucesso.'));
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        console.error(chalk.red(error));
+      }
+    }
+    
+    // Cria o novo arquivo com os dados
+    await writeFile(filePath, dadosEmJson);
+    console.log(chalk.green(`Arquivo JSON "${fileName}" foi criado com sucesso em: ${filePath}`));
+    
+  } catch (err) {
+    console.error(chalk.red('Ocorreu um erro ao gerenciar o arquivo:'), err);
+  }
+}
+
+// Executa a função principal
+managerFile().then(() => {
+});

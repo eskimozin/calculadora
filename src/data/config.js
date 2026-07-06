@@ -1,4 +1,5 @@
 const baseUrl = "calculadora";
+const siteUrl = "https://eskimozin.github.io/calculadora";
 
 const contacts = {
   "mail": "eskimozin@mecinc.gg",
@@ -6,10 +7,12 @@ const contacts = {
 }
 
 const app = {
-  "title": "Calculadora da Subathon"
+  "title": "Calculadora da Eskimathon - A Subathon do Eskimozin",
+  "moment-locale": "pt-BR",
+  "timezone": "America/Sao_Paulo",
 }
 
-const suggestionOptionsForBits = [
+const suggestionOptionsForKicks = [
   ["100", 100],
   ["500", 500],
   ["1000", 1000],
@@ -25,6 +28,7 @@ const suggestionsOptionsForSubs = [
 ]
 
 const suggestionsOptionsForReal = [
+  ["R$ 75", 75],
   ["R$ 100", 100],
   ["R$ 150", 150],
   ["R$ 200", 200],
@@ -34,9 +38,10 @@ const suggestionsOptionsForReal = [
 
 export {
   baseUrl,
+  siteUrl,
   contacts,
   app,
-  suggestionOptionsForBits,
+  suggestionOptionsForKicks,
   suggestionsOptionsForSubs,
   suggestionsOptionsForReal,
 }

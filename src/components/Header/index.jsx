@@ -31,7 +31,7 @@ function Header() {
         style={{background: "unset", padding: 0, maxWidth: '425px', margin: '0 auto'}}
       >
         <div className={"animate-from-bottom"}>
-          <h1 className={"text-balance text-center p-0 m-auto emphasis"}>{title}</h1>
+          <h1 className={"text-balance text-center p-0 m-auto emphasis"}>{title?.split(" - ")?.[0]}</h1>
         </div>
         <div className={"d-flex flex-column"}>
           <span className={"text-white-50 d-flex flex mx-auto"} style={{rotate: "90deg", width: "min-content"}}>|</span>

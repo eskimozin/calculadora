@@ -18,7 +18,7 @@ const InputComponent = (props, ref) => {
         const {floatValue} = values;
         return floatValue < maxLimit;
       }}
-      className={"form-control" + " " + className}
+      className={"form-control text-warning fs-5 fw-bold" + " " + className}
     />
   );
 };

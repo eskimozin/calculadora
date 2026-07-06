@@ -15,7 +15,7 @@ function Home() {
     </svg>
   )
   
-  const yearCurrentCount = useRef(2025);
+  const yearCurrentCount = useRef();
   const nextDateForNewSubathon = useRef("2026-01-01T00:00:00-03:00");
   
   const subathonInit = "2025-07-11T18:00:00-03:00";
@@ -23,8 +23,8 @@ function Home() {
   const [diff, setDiff] = useState(0);
   
   useEffect(() => {
-    if (subathonInit && subathonInitComponent) setDiff(moment().diff(moment(nextDateForNewSubathon.current)));
-  }, [subathonInit, subathonInitComponent])
+    setDiff(moment().diff(moment(nextDateForNewSubathon.current)));
+  }, [])
   
   const btnDonation = "btn btn-default rounded-1 text-dark d-flex align-items-center gap-1";
   const styleBtnDonation = {backdropFilter: "blur(10px)", backgroundColor: "#FFFFFF60", border: "1px solid #FFFFFF50"};
@@ -35,6 +35,7 @@ function Home() {
         resources["subathonIsEnded"] ? (
           <section className={"banner-campaign py-5 px-3 rounded-2 d-flex flex-column gap-3 align-items-center text-center text-balance text-black mb-1"}>
             <h3 className={"text-dark fs-3 m-0"}>
+              {/* eslint-disable-next-line react-hooks/refs */}
               A subathon de {yearCurrentCount.current ?? "2025"} acabou.{" "}
               Mas {diff > 0 ? "esse ano tem mais" : "ano que vem tem mais"}.
             </h3>
@@ -48,21 +49,21 @@ function Home() {
             <div className={"d-flex flex-column gap-5"}>
               <section className={"text-center text-balance text-body"}>
                 <p>{subathonInitComponent}</p>
-                <p>Assista em <Link to={"https://twitch.tv/eskimozin"} className={"text-body"}>{Util.renderText("twitch.tv/eskimozin")}</Link></p>
+                <p>Assista em <Link to={links["live"]} className={"text-body"}>{Util.renderText(links["live"]?.replace(/https:\/\//g, ""))}</Link></p>
               </section>
               
               <LiveTimeCalculator/>
               
               <section className={"banner-campaign p-3 rounded-2 d-flex flex-column gap-3 align-items-center text-center text-balance"}>
-                <h3 className={"text-dark fs-3 m-0"}>Contribua com a Eskimothon, para o Eskimo ficar 1 ano em live!</h3>
+                <h3 className={"text-dark fs-3 m-0"}>Contribua com a Eskimathon, para o Eskimo ficar 1 ano em live!</h3>
                 <p className="text-black">{subathonInitComponent}</p>
                 <div className={"d-flex flex-wrap justify-content-center align-items-center gap-2"}>
-                  <Link to={links["livepix"]} className={btnDonation} style={styleBtnDonation}>Live Pix {iconOpenInNewPage}</Link>
-                  <Link to={links["subsTwitch"]} className={btnDonation} style={styleBtnDonation}>Dar subs {iconOpenInNewPage}</Link>
-                  <Link to={links["bitsTwitch"]} className={btnDonation} style={styleBtnDonation}>Contribuir com bits {iconOpenInNewPage}</Link>
+                  <Link to={links["pix"]} className={btnDonation} style={styleBtnDonation}>{resources["pixIntermediatePlatformName"]} {iconOpenInNewPage}</Link>
+                  <Link to={links["subsKick"]} className={btnDonation} style={styleBtnDonation}>Dar subs {iconOpenInNewPage}</Link>
+                  <Link to={links["kicksKick"]} className={btnDonation} style={styleBtnDonation}>Contribuir com kicks {iconOpenInNewPage}</Link>
                 </div>
                 <div>
-                  <p className={"m-0 text-black"}>{resources.valDonation} real dá {resources.donationInTimeMinutes} minuto de live, <b>{resources.valSubs} sub dá {resources.subsInTimeMinutes} minutos</b> e {resources.valBits} bits vira {resources.bitsInTimeMinutes} minutos!</p>
+                  <p className={"m-0 text-black"}>{resources.valDonation} real dá {resources.donationInTimeMinutes} minuto de live, <b>{resources.valSubs} sub dá {resources.subsInTimeMinutes} minutos</b> e {resources.valKicks} kicks vira {resources.kicksInTimeMinutes} minutos!</p>
                 </div>
               </section>
             </div>
