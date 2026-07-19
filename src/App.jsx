@@ -1,4 +1,4 @@
-import {Suspense, useEffect, useState} from 'react';
+import {Suspense, useEffect, useRef, useState} from 'react';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as bootstrap from 'bootstrap';
@@ -15,6 +15,7 @@ import Loading from "./components/Loading/Loading.jsx";
 
 function App() {
   const [pathname, setPathname] = useState("");
+  const resultDisplay = useRef(null);
   
   useEffect(() => {
     new bootstrap.Tooltip(document.body, {
@@ -59,7 +60,7 @@ function App() {
   }, []);
   
   return (
-    <AppContext value={{pathname, setPathname}}>
+    <AppContext value={{pathname, setPathname, resultDisplay}}>
       <HashRouter>
         <Suspense fallback={<Loading/>}>
           <div className="App">

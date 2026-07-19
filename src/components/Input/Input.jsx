@@ -1,12 +1,14 @@
 import PropTypes from "prop-types";
 import {NumericFormat} from 'react-number-format';
-import React from 'react';
+import React, {useContext, useRef} from 'react';
 import {Button, Image, InputGroup, OverlayTrigger, Tooltip} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {ThemeContext} from "../AppContext/AppContext.jsx";
 
-// TODO - adicionar recebido de prop do link para o btn de contribuicao direcionar (abrir)
 const InputComponent = (props, ref) => {
   const {onChange, name, maxLimit, className, contributeLink, ...other} = props;
+  const {resultDisplay} = useContext(ThemeContext);
+  const scrollTimeout = useRef(null);
   
   return (
     <div className={"d-flex justify-content-between align-items-stretch flex-md-nowrap flex-wrap gap-2"}>
@@ -17,6 +19,12 @@ const InputComponent = (props, ref) => {
           onValueChange={(values, sourceInfo) => {
             if (onChange && sourceInfo.event) {
               onChange(name, values.value);
+              if (window.innerWidth > 767 && resultDisplay?.current) {
+                if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+                scrollTimeout.current = setTimeout(() => {
+                  window.scrollTo({top: resultDisplay.current.offsetTop + 16, behavior: "smooth"});
+                }, 800); // 800ms debounce para evitar spam
+              }
             }
           }}
           isAllowed={(values) => {
