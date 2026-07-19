@@ -1,6 +1,6 @@
 # Calculadora - Subathon Eskimozin ⏱️
 
-> Calculadora desenvolvida a subathon do streamer Eskimozin.
+> Calculadora desenvolvida para a subathon do streamer Eskimozin.
 
 ### 🏠 [Homepage](/)
 ### ✨ [Demo](https://eskimozin.github.io/calculadora/)
