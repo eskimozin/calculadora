@@ -1,7 +1,8 @@
 import {useMemo} from 'react';
 import PropTypes from "prop-types";
 import resources from "../../data/resources.js";
-import Util from "../../assets/Util.jsx";
+import DonationSummary from "./DonationSummary.jsx";
+import DonationDetails from "./DonationDetails.jsx";
 
 const ValueDisplay = ({totalSeconds}) => {
   const timeInMinutes = totalSeconds / 60;
@@ -13,41 +14,29 @@ const ValueDisplay = ({totalSeconds}) => {
     };
   }, [timeInMinutes]);
   
-  const subsInt = parseInt(values.subs.replace(/\./, ""));
-  const kicksInt = parseInt(values.kicks.replace(/\./, ""));
-  const realSnt = values.pix.replace("R$", "");
+  const subsInt = parseInt(values.subs.replace(/\./, "")) || 0;
+  const kicksInt = parseInt(values.kicks.replace(/\./, "")) || 0;
+  const realSnt = values.pix.replace("R$", "").trim();
   
   return (
     <div className="result-section bg-body-secondary m-0">
       <span className={"text-balance d-block"} style={{lineHeight: "1.5"}}>Para que o eskimo fique esse tempo em live, você precisa doar:</span>
-      <div className={"mt-2 fw-semibold text-white-50"}>
-        <h3 className={"fs-3 m-0 text-balance"} style={{lineHeight: "1.25"}}>
-          <span className={"text-warning-emphasis"}>{timeInMinutes > 0 ? realSnt : "zero"} reais</span>
-          <span>{" "}ou{" "}</span>
-          <span className={"text-warning-emphasis"} style={{textWrap: "nowrap"}}>{values.subs} {subsInt > 1 ? "subs" : "sub"}</span>
-          {
-            resources.valKicks !== -1 && (
-              <>
-                <span>{" "}ou{" "}</span>
-                <span className={"text-warning-emphasis"} style={{textWrap: "nowrap"}}>{values.kicks} {kicksInt > 1 ? "kicks" : "bit"}</span>
-              </>
-            )
-          }
-        </h3>
-      </div>
-      <div className={"mt-2"}>
-        <details tabIndex={-1}>
-          <summary className={"text-sm"}>
-            Detalhes
-          </summary>
-          {/*TODO - refatorar e evitar repetição de códigos*/}
-          <p className={"m-0 text-sm text-body-secondary mt-1"} style={{lineHeight: "1.5"}}>
-            <span>- {realSnt} reais = {(((parseFloat(realSnt.replace(/\./g, "").replace(",", ".")) || 0) / resources.valDonation) * resources.donationInTimeMinutes).toLocaleString("pt-br")} minutos ({Util.formatFriendlyDuration(((parseFloat(realSnt.replace(/\./g, "").replace(",", ".")) || 0) / resources.valDonation) * resources.donationInTimeMinutes)}). <br/></span>
-            <span>- {values.subs} {subsInt > 1 ? "subs" : "sub"} = {(((subsInt || 0) / resources.valSubs) * resources.subsInTimeMinutes).toLocaleString("pt-br")} minutos ({Util.formatFriendlyDuration(((subsInt || 0) / resources.valSubs) * resources.subsInTimeMinutes)}). <br/></span>
-            {resources.valKicks !== -1 && (<span>- {values.kicks} {kicksInt > 1 ? "kicks" : "bit"} = {(((kicksInt || 0) / resources.valKicks) * resources.kicksInTimeMinutes).toLocaleString("pt-br")} minutos. <br/></span>)}
-          </p>
-        </details>
-      </div>
+      <DonationSummary
+        timeInMinutes={timeInMinutes}
+        realSnt={realSnt}
+        subs={values.subs}
+        subsInt={subsInt}
+        kicks={values.kicks}
+        kicksInt={kicksInt}
+        hasKicks={resources.valKicks !== -1}
+      />
+      <DonationDetails
+        realSnt={realSnt}
+        subs={values.subs}
+        subsInt={subsInt}
+        kicks={values.kicks}
+        kicksInt={kicksInt}
+      />
     </div>
   );
 };

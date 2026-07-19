@@ -1,4 +1,4 @@
-import './styles.css';
+import './index.css';
 
 import {useEffect, useMemo, useState} from 'react';
 
