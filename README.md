@@ -1,24 +1,24 @@
-# Calculadora - Subathon Eskimozin ⏱️
+# Calculadora - Subathon Eskimozin
 
-> Calculadora desenvolvida para a subathon do streamer Eskimozin.
+Calculadora desenvolvida para calcular a partir de uma forma de contribuição o tempo que o Eskimozin ficaria em live.
 
-### 🏠 [Homepage](/)
-### ✨ [Demo](https://eskimozin.github.io/calculadora/)
+- [Homepage](/)
+- [Demo](https://eskimozin.github.io/calculadora/)
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
-- Cálculo em Tempo Real: Conversão de doações (Pix/PayPal), Bits, Subs e Kicks em tempo adicional para a live.
+- Cálculo em Tempo Real: Conversão de doações (Pix), Bits, Subs e Kicks em tempo adicional para a live.
 - Interface Moderna: Design responsivo e interativo construído com React, Bootstrap e Framer Motion.
 - Configuração Customizável: Facilidade para alterar os parâmetros de conversão (ex: tempo por Sub, tempo por real doado).
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - [React](https://reactjs.org/) (com Vite)
 - [React Bootstrap](https://react-bootstrap.github.io/)
 - [Framer Motion](https://www.framer.com/motion/)
 - [Moment.js](https://momentjs.com/)
 
-## ⚙️ Instalação e Uso
+## Instalação e Uso
 
 1. Clone o repositório:
 ```sh
@@ -40,7 +40,7 @@ npm run dev
 npm run build
 ```
 
-## 👨‍💻 Autor
+## Autor
 
 Gabriel Ribeiro
 
@@ -48,11 +48,11 @@ Gabriel Ribeiro
 * Github: [@gabriersdev](https://github.com/gabriersdev)
 * LinkedIn: [@gabrielmpribeiro](https://linkedin.com/in/gabrielmpribeiro)
 
-## 🤝 Contribuição
+## Contribuição
 
 Contribuições, problemas (issues) e pedidos de novas funcionalidades são muito bem-vindos!
 Sinta-se à vontade para verificar a [página de issues](https://github.com/eskimozin/calculadora/issues).
 
-## ⭐️ Apoie
+## Apoie
 
 Dê uma estrela ⭐️ se este projeto ajudou você!
