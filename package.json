@@ -11,11 +11,20 @@
     "lint:fix": "eslint src/**/*.js src/**/*.jsx --fix",
     "preview": "vite preview",
     "deploy": "node register.build.js && vite build && gh-pages -d dist",
+    "test": "echo \"No tests specified\"",
+    "ci:test": "start-server-and-test dev http://localhost:5173 test",
     "update": "npm update",
     "upgrade:deps": "npx npm-check-updates -i && npm install",
     "sync:version": "git pull && node scripts/sync-version.js && git add package.json && git commit -m \"build: update version\""
   },
   "dependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.9",
+    "@semantic-release/npm": "^13.1.5",
+    "@semantic-release/release-notes-generator": "^14.1.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
     "framer-motion": "^12.42.2",
@@ -38,6 +47,7 @@
     "eslint-plugin-react-refresh": "^0.5.3",
     "gh-pages": "^6.3.0",
     "globals": "^17.7.0",
+    "start-server-and-test": "^3.0.11",
     "vite": "^8.1.5"
   }
 }
