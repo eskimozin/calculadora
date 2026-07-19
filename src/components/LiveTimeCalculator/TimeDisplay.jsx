@@ -1,5 +1,6 @@
 import {useMemo} from 'react';
 import PropTypes from "prop-types";
+import resources from "../../data/resources.js";
 
 const TimeDisplay = ({totalSeconds, values}) => {
   const formattedTime = useMemo(() => {
@@ -41,9 +42,14 @@ const TimeDisplay = ({totalSeconds, values}) => {
             <p className={"m-0 text-sm text-body-secondary mt-1"} style={{lineHeight: "1.5"}}>
               {
                 values &&
-                Object.entries(values).map(([key, value], i) => (
-                  <span key={i} className={"text-capitalize"}>{key}: {key.toLowerCase() === "pix" ? "R$" : ""} {(value || 0).toLocaleString("pt-br")} {i === Object.keys(values).length - 1 ? "" : " + "}</span>
-                ))
+                Object.entries(values)
+                  .filter(i => i[0].toLowerCase() !== "kicks" || resources.valKicks !== -1)
+                  .map(([key, value], i, self) => (
+                      <span key={i} className={"text-capitalize"}>
+                      {key}: {key.toLowerCase() === "pix" ? "R$" : ""} {(value || 0).toLocaleString("pt-br")} {i === self.length - 1 ? "" : " + "}
+                    </span>
+                    )
+                  )
               }
             </p>
           </div>

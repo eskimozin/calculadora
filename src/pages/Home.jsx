@@ -63,10 +63,15 @@ function Home() {
                 <div className={"d-flex flex-wrap justify-content-center align-items-center gap-2"}>
                   <Link to={links["pix"]} className={btnDonation} style={styleBtnDonation}>{resources["pixIntermediatePlatformName"]} {iconOpenInNewPage}</Link>
                   <Link to={links["subsKick"]} className={btnDonation} style={styleBtnDonation}>Dar subs {iconOpenInNewPage}</Link>
-                  <Link to={links["kicksKick"]} className={btnDonation} style={styleBtnDonation}>Contribuir com kicks {iconOpenInNewPage}</Link>
+                  {resources.valKicks !== -1 && (<Link to={links["kicksKick"]} className={btnDonation} style={styleBtnDonation}>Contribuir com Kicks {iconOpenInNewPage}</Link>)}
                 </div>
                 <div>
-                  <p className={"m-0 text-black"}>{resources.valDonation} real dá {resources.donationInTimeMinutes} minuto de live, <b>{resources.valSubs} sub dá {resources.subsInTimeMinutes} minutos</b> e {resources.valKicks} kicks vira {resources.kicksInTimeMinutes} minutos!</p>
+                  <p className={"m-0 text-black"}>
+                    {resources.valDonation} real dá {resources.donationInTimeMinutes} minuto de live. {" "}
+                    <b>{resources.valSubs} sub dá {resources.subsInTimeMinutes} minutos</b>
+                    {resources.valKicks !== -1 && (<> e {resources.valKicks} kicks vira {resources.kicksInTimeMinutes} minutos</>)}
+                    !
+                  </p>
                 </div>
               </section>
             </div>

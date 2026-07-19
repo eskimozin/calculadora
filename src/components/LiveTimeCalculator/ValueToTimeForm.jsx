@@ -44,38 +44,42 @@ const ValueToTimeForm = ({values, onValueChange, clearValues}) => {
         contributeLink={links.subsKick}
       />
       
-      <ValueInputField
-        description={`${resources.valKicks} ${resources.valKicks > 1 ? "kicks aumentam" : "kick (bit para a Kick) aumenta"} ${resources.kicksInTimeMinutes} minutos no timer.`}
-        titleNode={
-          <div className={"d-flex align-items-center gap-1 pb-2 fs-5 fw-semibold"}>
-            Contribuir com Kicks
-            <OverlayTrigger overlay={
-              <Tooltip>
+      {
+        resources.valKicks !== -1 && (
+          <ValueInputField
+            description={`${resources.valKicks} ${resources.valKicks > 1 ? "kicks aumentam" : "kick (bit para a Kick) aumenta"} ${resources.kicksInTimeMinutes} minutos no timer.`}
+            titleNode={
+              <div className={"d-flex align-items-center gap-1 pb-2 fs-5 fw-semibold"}>
+                Contribuir com Kicks
+                <OverlayTrigger overlay={
+                  <Tooltip>
                 <span className={"text-sm lh-base d-block text-balance"}>
                   Um {'"Kick"'} funciona como uma moeda para a {resources["streamPlatformName"] ?? "plataforma"} e é semelhante à um bit para a Twitch.
                 </span>
-              </Tooltip>}>
-              <div className={"d-flex rounded-circle bg-body-secondary border align-items-center justify-content-center"} style={{minHeight: 20, minWidth: 22}}>
-                <div className={"d-flex align-items-center justify-content-center"}>
-                  <span className={"text-sm"}>?</span>
-                </div>
+                  </Tooltip>}>
+                  <div className={"d-flex rounded-circle bg-body-secondary border align-items-center justify-content-center"} style={{minHeight: 20, minWidth: 22}}>
+                    <div className={"d-flex align-items-center justify-content-center"}>
+                      <span className={"text-sm"}>?</span>
+                    </div>
+                  </div>
+                </OverlayTrigger>
               </div>
-            </OverlayTrigger>
-          </div>
-        }
-        inputProps={{
-          name: "kicks",
-          id: "kicks",
-          value: values.kicks,
-          onChange: onValueChange,
-          placeholder: "Ex: 1000"
-        }}
-        suggestionOptions={[...suggestionOptionsForKicks]}
-        onSuggestionSelect={(val) => onValueChange("kicks", val)}
-        formatSuggestionText={(text) => `${parseInt(text).toLocaleString("pt-br")} kicks`}
-        footerNode={<p className={"m-0 text-sm pt-1 text-danger-emphasis"}>É necessário no mínimo {resources.minCountKicks} {resources.minCountKicks > 1 ? "kicks" : "bit"} para ser contado no timer.</p>}
-        contributeLink={links.kicksKick}
-      />
+            }
+            inputProps={{
+              name: "kicks",
+              id: "kicks",
+              value: values.kicks,
+              onChange: onValueChange,
+              placeholder: "Ex: 1000"
+            }}
+            suggestionOptions={[...suggestionOptionsForKicks]}
+            onSuggestionSelect={(val) => onValueChange("kicks", val)}
+            formatSuggestionText={(text) => `${parseInt(text).toLocaleString("pt-br")} kicks`}
+            footerNode={<p className={"m-0 text-sm pt-1 text-danger-emphasis"}>É necessário no mínimo {resources.minCountKicks} {resources.minCountKicks > 1 ? "kicks" : "bit"} para ser contado no timer.</p>}
+            contributeLink={links.kicksKick}
+          />
+        )
+      }
       
       <ClearFormButton onClick={clearValues}/>
     </form>

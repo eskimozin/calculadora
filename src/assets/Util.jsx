@@ -267,4 +267,16 @@ export default class Util {
     if (absDiff < (86400 * 30)) return `há ${now.diff(target, 'days')} dia${now.diff(target, 'days') > 1 ? "s" : ""}`;
     return `${target.format('DD/MM/YYYY')}`;
   }
+  
+  static formatFriendlyDuration(minutes) {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    const fixed = 0;
+    
+    const zeroInLFT = (number) => (number < 10 ? "0" : "");
+    
+    if (hours > 0 && remainingMinutes > 0) return `${hours.toFixed(fixed)}h ${zeroInLFT(remainingMinutes)}${remainingMinutes.toFixed(fixed)}m`;
+    if (hours > 0) return `${hours.toFixed(fixed)}h`;
+    return `${zeroInLFT(minutes)}${minutes.toFixed(fixed)} min`;
+  }
 }

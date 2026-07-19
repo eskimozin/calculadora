@@ -1,6 +1,7 @@
 import {useMemo} from 'react';
 import PropTypes from "prop-types";
 import resources from "../../data/resources.js";
+import Util from "../../assets/Util.jsx";
 
 const ValueDisplay = ({totalSeconds}) => {
   const timeInMinutes = totalSeconds / 60;
@@ -24,8 +25,14 @@ const ValueDisplay = ({totalSeconds}) => {
           <span className={"text-warning-emphasis"}>{timeInMinutes > 0 ? realSnt : "zero"} reais</span>
           <span>{" "}ou{" "}</span>
           <span className={"text-warning-emphasis"} style={{textWrap: "nowrap"}}>{values.subs} {subsInt > 1 ? "subs" : "sub"}</span>
-          <span>{" "}ou{" "}</span>
-          <span className={"text-warning-emphasis"} style={{textWrap: "nowrap"}}>{values.kicks} {kicksInt > 1 ? "kicks" : "bit"}</span>
+          {
+            resources.valKicks !== -1 && (
+              <>
+                <span>{" "}ou{" "}</span>
+                <span className={"text-warning-emphasis"} style={{textWrap: "nowrap"}}>{values.kicks} {kicksInt > 1 ? "kicks" : "bit"}</span>
+              </>
+            )
+          }
         </h3>
       </div>
       <div className={"mt-2"}>
@@ -33,10 +40,11 @@ const ValueDisplay = ({totalSeconds}) => {
           <summary className={"text-sm"}>
             Detalhes
           </summary>
+          {/*TODO - refatorar e evitar repetição de códigos*/}
           <p className={"m-0 text-sm text-body-secondary mt-1"} style={{lineHeight: "1.5"}}>
-            <span>- {realSnt} reais = {(((parseFloat(realSnt.replace(/\./g, "").replace(",", ".")) || 0) / resources.valDonation) * resources.donationInTimeMinutes).toLocaleString("pt-br")} minutos. <br/></span>
-            <span>- {values.subs} {subsInt > 1 ? "subs" : "sub"} = {(((subsInt || 0) / resources.valSubs) * resources.subsInTimeMinutes).toLocaleString("pt-br")} minutos. <br/></span>
-            <span>- {values.kicks} {kicksInt > 1 ? "kicks" : "bit"} = {(((kicksInt || 0) / resources.valKicks) * resources.kicksInTimeMinutes).toLocaleString("pt-br")} minutos. <br/></span>
+            <span>- {realSnt} reais = {(((parseFloat(realSnt.replace(/\./g, "").replace(",", ".")) || 0) / resources.valDonation) * resources.donationInTimeMinutes).toLocaleString("pt-br")} minutos ({Util.formatFriendlyDuration(((parseFloat(realSnt.replace(/\./g, "").replace(",", ".")) || 0) / resources.valDonation) * resources.donationInTimeMinutes)}). <br/></span>
+            <span>- {values.subs} {subsInt > 1 ? "subs" : "sub"} = {(((subsInt || 0) / resources.valSubs) * resources.subsInTimeMinutes).toLocaleString("pt-br")} minutos ({Util.formatFriendlyDuration(((subsInt || 0) / resources.valSubs) * resources.subsInTimeMinutes)}). <br/></span>
+            {resources.valKicks !== -1 && (<span>- {values.kicks} {kicksInt > 1 ? "kicks" : "bit"} = {(((kicksInt || 0) / resources.valKicks) * resources.kicksInTimeMinutes).toLocaleString("pt-br")} minutos. <br/></span>)}
           </p>
         </details>
       </div>

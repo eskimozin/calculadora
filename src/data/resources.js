@@ -11,7 +11,7 @@ const resources = {
   
   "valDonation": 1,
   "valSubs": 1,
-  "valKicks": 100,
+  "valKicks": -1,
   
   "donationInTimeMinutes": 1,
   "subsInTimeMinutes": 25,
