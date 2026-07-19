@@ -9,7 +9,8 @@ const ValueInputField = ({
                            suggestionOptions,
                            onSuggestionSelect,
                            formatSuggestionText,
-                           footerNode
+                           footerNode,
+                           contributeLink
                          }) => {
   return (
     <div className="form-group">
@@ -24,6 +25,7 @@ const ValueInputField = ({
           maxLimit={10000000}
           type="text"
           inputMode={"numeric"}
+          contributeLink={contributeLink}
           {...inputProps}
         />
       </label>
@@ -49,6 +51,7 @@ ValueInputField.propTypes = {
   onSuggestionSelect: PropTypes.func,
   formatSuggestionText: PropTypes.func,
   footerNode: PropTypes.node,
+  contributeLink: PropTypes.string,
 };
 
 export default ValueInputField;

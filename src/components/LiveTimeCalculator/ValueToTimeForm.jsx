@@ -4,6 +4,7 @@ import resources from "../../data/resources.js";
 import {suggestionOptionsForKicks, suggestionsOptionsForReal, suggestionsOptionsForSubs} from "../../data/config.js";
 import ValueInputField from "./ValueInputField.jsx";
 import ClearFormButton from "./ClearFormButton.jsx";
+import links from "../../data/links.js";
 
 const ValueToTimeForm = ({values, onValueChange, clearValues}) => {
   return (
@@ -24,6 +25,7 @@ const ValueToTimeForm = ({values, onValueChange, clearValues}) => {
         }}
         suggestionOptions={[...suggestionsOptionsForReal]}
         onSuggestionSelect={(val) => onValueChange("pix", val)}
+        contributeLink={links.pix}
       />
       
       <ValueInputField
@@ -39,6 +41,7 @@ const ValueToTimeForm = ({values, onValueChange, clearValues}) => {
         suggestionOptions={[...suggestionsOptionsForSubs]}
         onSuggestionSelect={(val) => onValueChange("subs", val)}
         formatSuggestionText={(text) => `${text} subs`}
+        contributeLink={links.subsKick}
       />
       
       <ValueInputField
@@ -71,6 +74,7 @@ const ValueToTimeForm = ({values, onValueChange, clearValues}) => {
         onSuggestionSelect={(val) => onValueChange("kicks", val)}
         formatSuggestionText={(text) => `${parseInt(text).toLocaleString("pt-br")} kicks`}
         footerNode={<p className={"m-0 text-sm pt-1 text-danger-emphasis"}>É necessário no mínimo {resources.minCountKicks} {resources.minCountKicks > 1 ? "kicks" : "bit"} para ser contado no timer.</p>}
+        contributeLink={links.kicksKick}
       />
       
       <ClearFormButton onClick={clearValues}/>
