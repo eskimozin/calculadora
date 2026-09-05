@@ -5,7 +5,7 @@ moment.locale(app["moment-locale"] ?? "pt-BR");
 
 const resources = {
   "subathonInitDatetime": moment("2026-07-06T18:00:00-03:00"),
-  "subathonIsEnded": false,
+  "subathonIsEnded": true,
   "currentYear": new moment().get("year") || 2026,
   "minCountKicks": 100,
   

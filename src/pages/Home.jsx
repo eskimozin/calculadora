@@ -15,8 +15,8 @@ function Home() {
     </svg>
   )
   
-  const yearCurrentCount = useRef();
-  const nextDateForNewSubathon = useRef((resources.subathonInitDatetime.get("year") ?? "2026") + "-01-01T00:00:00-03:00");
+  const yearCurrentCount = useRef((resources.subathonInitDatetime.get("year") ?? "2026"));
+  const nextDateForNewSubathon = useRef(((resources.subathonInitDatetime.get("year") ?? 2026) + 1) + "-01-01T00:00:00-03:00");
   
   const subathonInit = resources.subathonInitDatetime;
   const subathonInitComponent = moment().diff(moment(subathonInit), "seconds") > 0 ?
