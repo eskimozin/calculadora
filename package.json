@@ -2,7 +2,7 @@
   "name": "calculadora",
   "description": "Calculadora da subathon 2025 do eskimozin ",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
